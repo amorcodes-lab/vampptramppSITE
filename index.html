@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+=====================================================================
+  vampptrampp — dark electronic
+=====================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>vampptrampp // dark electronic</title>
+  <meta name="description" content="Official site of vampptrampp — dark electronic." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=VT323&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ================= TOP MARQUEE ================= -->
+  <div class="topbar">
+    <marquee scrollamount="4">
+      &#10013; welcome to the dark &#10013; new music incoming &#10013;
+      sign the guestbook &#10013; turn the lights off &#10013;
+    </marquee>
+  </div>
+
+  <!-- ================= HEADER / HERO ================= -->
+  <header class="hero" id="home">
+    <div class="hero-frame">
+      <h1 class="artist-name glitch" data-text="vampptrampp">vampptrampp</h1>
+      <p class="tagline">&#9788; [ dark electronic &middot; industrial &middot; electronic ] &#9788;</p>
+    </div>
+
+    <!-- ================= NAVIGATION ================= -->
+    <nav class="nav">
+      <a href="#music">[ Music ]</a>
+      <a href="#gallery">[ Gallery ]</a>
+      <a href="#tour">[ Tour ]</a>
+      <a href="#bio">[ Manifesto ]</a>
+      <a href="#contact">[ Contact ]</a>
+      <a href="#guestbook">[ Guestbook ]</a>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN LAYOUT (2 columns) ================= -->
+  <div class="layout">
+
+    <!-- ---------- LEFT: primary content ---------- -->
+    <main class="content">
+
+      <!-- ========== SECTION: MUSIC PLAYER ========== -->
+      <section id="music" class="panel">
+        <h2 class="panel-title">&#9835; Music</h2>
+
+        <!-- EDIT: replace with Bandcamp / SoundCloud / Spotify iframe or <audio> -->
+        <div class="placeholder-box music-placeholder">
+          [ Music Player Placeholder ]
+        </div>
+
+        <!-- EDIT: tracklist -->
+        <ul class="tracklist">
+          <li><span>01</span> [ Track One ] <span class="dur">--:--</span></li>
+          <li><span>02</span> [ Track Two ] <span class="dur">--:--</span></li>
+          <li><span>03</span> [ Track Three ] <span class="dur">--:--</span></li>
+          <li><span>04</span> [ Track Four ] <span class="dur">--:--</span></li>
+        </ul>
+      </section>
+
+      <img class="divider" src="assets/skull-divider.gif" alt="divider" />
+
+      <!-- ========== SECTION: PHOTO GALLERY ========== -->
+      <section id="gallery" class="panel">
+        <h2 class="panel-title">&#9608; Gallery</h2>
+        <p class="hint">// click a frame — nothing happens yet, this is a shell</p>
+
+        <!-- EDIT: replace .gallery-slot divs with real <img> tags -->
+        <div class="gallery-grid">
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 1</div>
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 2</div>
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 3</div>
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 4</div>
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 5</div>
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 6</div>
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 7</div>
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 8</div>
+          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 9</div>
+        </div>
+      </section>
+
+      <img class="divider" src="assets/skull-divider.gif" alt="divider" />
+
+      <!-- ========== SECTION: TOUR / EVENTS ========== -->
+      <section id="tour" class="panel">
+        <h2 class="panel-title">&#9760; Tour Dates</h2>
+
+        <!-- EDIT: replace dummy rows with real show data -->
+        <table class="tour-table">
+          <thead>
+            <tr><th>Date</th><th>City</th><th>Venue</th><th>Tickets</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>00 / 00</td><td>[ City ]</td><td>[ Venue ]</td>
+              <td><a href="#" onclick="fakeAction('tickets');return false;">[ RSVP ]</a></td>
+            </tr>
+            <tr>
+              <td>00 / 00</td><td>[ City ]</td><td>[ Venue ]</td>
+              <td><a href="#" onclick="fakeAction('tickets');return false;">[ RSVP ]</a></td>
+            </tr>
+            <tr>
+              <td>00 / 00</td><td>[ City ]</td><td>[ Venue ]</td>
+              <td><a href="#" onclick="fakeAction('tickets');return false;">[ RSVP ]</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <img class="divider" src="assets/skull-divider.gif" alt="divider" />
+
+      <!-- ========== SECTION: BIO / MANIFESTO ========== -->
+      <section id="bio" class="panel">
+        <h2 class="panel-title">&#10013; Manifesto</h2>
+
+        <!-- EDIT: replace with real bio / artist statement -->
+        <div class="scroll-box">
+          <p>[ Bio paragraph one — placeholder ] The signal comes from somewhere underneath.
+          Low frequencies, sharp edges. vampptrampp is the sound of machines dreaming
+          in the dark.</p>
+
+          <p>[ Bio paragraph two — placeholder ] Built from static and shadow.
+          Every track a descent. Every beat a pulse from a system you can't see.</p>
+
+          <p>[ Bio paragraph three — placeholder ] Replace this with the real manifesto.
+          The box scrolls — take as much space as it needs.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ---------- RIGHT: retro sidebar ---------- -->
+    <aside class="sidebar">
+
+      <!-- visitor counter widget -->
+      <div class="widget">
+        <div class="widget-head">&#9670; Visitors &#9670;</div>
+        <div class="hit-counter" id="hitCounter">000000</div>
+        <div class="widget-sub">you are visitor #<span id="hitInline">0</span></div>
+      </div>
+
+      <!-- "now playing" status widget -->
+      <div class="widget">
+        <div class="widget-head">&#9835; Status &#9835;</div>
+        <div class="np-box"><span class="blink">&#9654;</span> <span id="npText">...</span></div>
+      </div>
+
+      <!-- mailing list / contact -->
+      <div class="widget" id="contact">
+        <div class="widget-head">&#9993; Mailing List</div>
+        <!-- EDIT: wire to Formspree / Netlify Forms / own endpoint -->
+        <div class="ml-form">
+          <input type="text" id="mlName" placeholder="name / alias" />
+          <input type="email" id="mlEmail" placeholder="email" />
+          <textarea id="mlMsg" rows="3" placeholder="message (optional)"></textarea>
+          <button class="btn" onclick="submitMailingList()">[ Subscribe ]</button>
+        </div>
+      </div>
+
+      <img class="bat" src="assets/bat-fly.gif" alt="bat" />
+
+      <!-- social / links -->
+      <div class="widget">
+        <div class="widget-head">&#10059; Links &#10059;</div>
+        <!-- EDIT: swap for real social links -->
+        <div class="linkbtns">
+          <a href="#" onclick="fakeAction('link');return false;" class="linkbtn">bandcamp</a>
+          <a href="#" onclick="fakeAction('link');return false;" class="linkbtn">soundcloud</a>
+          <a href="#" onclick="fakeAction('link');return false;" class="linkbtn">instagram</a>
+          <a href="#" onclick="fakeAction('link');return false;" class="linkbtn">spotify</a>
+        </div>
+      </div>
+
+      <img class="seal" src="assets/pentagram.gif" alt="seal" />
+
+    </aside>
+  </div>
+
+  <!-- ================= GUESTBOOK ================= -->
+  <section id="guestbook" class="panel guestbook">
+    <h2 class="panel-title">&#9999; Guestbook</h2>
+    <p class="hint">// leave a mark on the wall</p>
+
+    <div class="gb-entries" id="gbEntries">
+      <div class="gb-entry">
+        <span class="gb-name">Visitor_001</span>
+        <span class="gb-date">[ 00/00/00 ]</span>
+        <p>found this in the dark. staying.</p>
+      </div>
+      <div class="gb-entry">
+        <span class="gb-name">signal_ghost</span>
+        <span class="gb-date">[ 00/00/00 ]</span>
+        <p>the frequencies do something to my brain. good something.</p>
+      </div>
+    </div>
+
+    <div class="gb-sign">
+      <input type="text" id="gbName" placeholder="your name / alias" />
+      <input type="text" id="gbMsg" placeholder="your message" />
+      <button class="btn" onclick="signGuestbook()">[ Sign ]</button>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <img class="construction" src="assets/under-construction.gif" alt="under construction" />
+
+    <p class="footer-text">
+      &copy; 2026 vampptrampp &mdash; all frequencies reserved.<br />
+      best viewed at midnight &middot; with the sound on &middot; lights off
+    </p>
+  </footer>
+
+  <!-- ================= BLINKING STATUS BAR ================= -->
+  <div class="statusbar">
+    <span class="blink">&#9679;</span>
+    <span id="statusText">Now playing: [ placeholder ]</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+/* =====================================================================
+   vampptrampp — STYLESHEET
+   Dark electronic aesthetic.
+   ---------------------------------------------------------------------
+   COLOR PALETTE  (edit variables below to re-skin)
+   ===================================================================== */
+:root {
+  --bg:        #0a0a0a;
+  --bg-panel:  #121012;
+  --bg-inset:  #050505;
+  --purple:    #4a0e4e;
+  --blood:     #800000;
+  --neon:      #c23ad0;
+  --bone:      #d2c8be;
+  --ghost:    #6f6478;
+  --line:      #2a2230;
+}
+
+/* ---------- reset ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { background: var(--bg); }
+
+body {
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--bone);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(255,255,255,0.018) 3px,
+    rgba(0,0,0,0) 4px
+  );
+  padding-bottom: 46px;
+  cursor: crosshair;
+}
+
+img, div, input, textarea, button, table, td, th, a { border-radius: 0 !important; }
+
+a { color: var(--neon); text-decoration: none; }
+a:hover { color: #fff; text-shadow: 0 0 6px var(--neon); }
+
+/* =====================================================================
+   TOP MARQUEE
+   ===================================================================== */
+.topbar {
+  background: var(--purple);
+  color: var(--bone);
+  border-bottom: 2px solid var(--blood);
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding: 3px 0;
+}
+
+/* =====================================================================
+   HERO / HEADER
+   ===================================================================== */
+.hero {
+  max-width: 880px;
+  margin: 22px auto 0;
+  padding: 0 14px;
+  text-align: center;
+}
+
+.hero-frame {
+  border: 2px solid var(--purple);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(74,14,78,0.55), transparent 70%),
+    var(--bg-panel);
+  padding: 34px 16px 26px;
+  box-shadow: 0 0 0 1px var(--blood) inset;
+}
+
+.artist-name {
+  font-family: "UnifrakturMaguntia", "Times New Roman", serif;
+  font-size: 64px;
+  font-weight: normal;
+  line-height: 1;
+  color: var(--bone);
+  letter-spacing: 2px;
+  text-shadow: 0 0 14px rgba(194,58,208,0.55), 3px 3px 0 var(--purple);
+}
+
+.tagline {
+  margin-top: 10px;
+  color: var(--ghost);
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+
+/* glitch hover on artist name */
+.glitch { position: relative; display: inline-block; }
+.glitch:hover::before,
+.glitch:hover::after {
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0;
+  width: 100%;
+}
+.glitch:hover::before { color: var(--blood); transform: translate(-3px, 1px); opacity: .8; }
+.glitch:hover::after  { color: var(--neon);  transform: translate(3px, -1px); opacity: .8; }
+
+/* =====================================================================
+   NAVIGATION
+   ===================================================================== */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 14px;
+}
+.nav a {
+  display: block;
+  padding: 6px 14px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  color: var(--neon);
+  letter-spacing: 1px;
+  transition: background .15s, box-shadow .15s, color .15s;
+}
+.nav a:hover {
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 0 0 10px var(--neon);
+}
+
+/* =====================================================================
+   MAIN 2-COLUMN LAYOUT
+   ===================================================================== */
+.layout {
+  max-width: 880px;
+  margin: 18px auto;
+  padding: 0 14px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.content { flex: 1 1 auto; min-width: 0; }
+.sidebar { flex: 0 0 220px; }
+
+/* =====================================================================
+   PANELS
+   ===================================================================== */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--purple);
+  padding: 16px 18px 20px;
+  margin-bottom: 16px;
+}
+.panel-title {
+  font-family: "UnifrakturMaguntia", serif;
+  font-weight: normal;
+  font-size: 32px;
+  color: var(--bone);
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 8px rgba(194,58,208,0.4);
+}
+.hint {
+  color: var(--ghost);
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.placeholder-box {
+  border: 2px dashed var(--blood);
+  background: var(--bg-inset);
+  color: var(--ghost);
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 40px 10px;
+}
+.music-placeholder { font-size: 22px; }
+
+/* ---------- tracklist ---------- */
+.tracklist { list-style: none; margin-top: 14px; }
+.tracklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.tracklist li:hover { background: rgba(74,14,78,0.35); }
+.tracklist li span:first-child { color: var(--blood); }
+.tracklist .dur { margin-left: auto; color: var(--ghost); }
+
+/* ---------- divider GIF ---------- */
+.divider {
+  display: block;
+  margin: 4px auto 18px;
+  image-rendering: pixelated;
+}
+
+/* =====================================================================
+   PHOTO GALLERY
+   ===================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.gallery-slot {
+  aspect-ratio: 1 / 1;
+  background:
+    repeating-linear-gradient(45deg, #141014 0 8px, #0d0a0d 8px 16px);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ghost);
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s, color .15s;
+}
+.gallery-slot:hover {
+  border-color: var(--neon);
+  color: var(--bone);
+  box-shadow: 0 0 10px rgba(194,58,208,0.5) inset;
+}
+
+/* =====================================================================
+   TOUR TABLE
+   ===================================================================== */
+.tour-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 17px;
+}
+.tour-table th,
+.tour-table td {
+  border: 1px solid var(--line);
+  padding: 7px 9px;
+  text-align: left;
+}
+.tour-table th {
+  background: var(--purple);
+  color: var(--bone);
+  letter-spacing: 1px;
+}
+.tour-table tbody tr:nth-child(odd)  { background: #100d10; }
+.tour-table tbody tr:hover { background: rgba(128,0,0,0.25); }
+
+/* =====================================================================
+   BIO / MANIFESTO SCROLL BOX
+   ===================================================================== */
+.scroll-box {
+  height: 190px;
+  overflow-y: scroll;
+  border: 1px solid var(--line);
+  background: var(--bg-inset);
+  padding: 12px 14px;
+}
+.scroll-box p { margin-bottom: 12px; color: #b8aeb0; }
+.scroll-box::-webkit-scrollbar { width: 14px; }
+.scroll-box::-webkit-scrollbar-track { background: #0a080a; }
+.scroll-box::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border: 2px solid #0a080a;
+}
+
+/* =====================================================================
+   SIDEBAR WIDGETS
+   ===================================================================== */
+.widget {
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+  margin-bottom: 14px;
+}
+.widget-head {
+  background: var(--purple);
+  color: var(--bone);
+  text-align: center;
+  font-size: 17px;
+  letter-spacing: 1px;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--blood);
+}
+.widget-sub {
+  text-align: center;
+  font-size: 14px;
+  color: var(--ghost);
+  padding: 0 6px 8px;
+}
+
+.hit-counter {
+  font-size: 30px;
+  letter-spacing: 6px;
+  text-align: center;
+  color: #ff4d4d;
+  background: #1a0000;
+  margin: 10px 8px 4px;
+  padding: 6px 0;
+  border: 1px solid var(--blood);
+  text-shadow: 0 0 8px rgba(255,77,77,0.8);
+}
+
+.np-box {
+  padding: 10px;
+  font-size: 16px;
+  color: var(--bone);
+  word-break: break-word;
+}
+.np-box .blink { color: var(--neon); }
+
+.ml-form { padding: 10px; display: flex; flex-direction: column; gap: 7px; }
+.ml-form input,
+.ml-form textarea,
+.gb-sign input {
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  color: var(--bone);
+  font-family: inherit;
+  font-size: 16px;
+  padding: 6px 7px;
+}
+.ml-form input:focus,
+.ml-form textarea:focus,
+.gb-sign input:focus {
+  outline: none;
+  border-color: var(--neon);
+  box-shadow: 0 0 8px rgba(194,58,208,0.4);
+}
+.ml-form textarea { resize: vertical; }
+
+.btn {
+  background: var(--purple);
+  border: 1px solid var(--neon);
+  color: var(--bone);
+  font-family: inherit;
+  font-size: 17px;
+  letter-spacing: 1px;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: background .15s, box-shadow .15s, color .15s;
+}
+.btn:hover {
+  background: var(--blood);
+  color: #fff;
+  box-shadow: 0 0 12px var(--neon);
+}
+.btn:active { transform: translateY(1px); }
+
+.linkbtns { padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+.linkbtn {
+  display: block;
+  text-align: center;
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  padding: 5px 6px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.linkbtn:hover { border-color: var(--neon); background: var(--purple); color: #fff; }
+
+.bat, .seal {
+  display: block;
+  margin: 0 auto 14px;
+  image-rendering: pixelated;
+}
+.seal { width: 90px; }
+
+/* =====================================================================
+   GUESTBOOK
+   ===================================================================== */
+.guestbook {
+  max-width: 880px;
+  margin: 0 auto 16px;
+}
+.gb-entries { display: flex; flex-direction: column; gap: 8px; }
+.gb-entry {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--purple);
+  background: var(--bg-inset);
+  padding: 8px 10px;
+}
+.gb-name { color: var(--neon); letter-spacing: 1px; }
+.gb-date { color: var(--ghost); font-size: 14px; margin-left: 8px; }
+.gb-entry p { margin-top: 4px; color: #b8aeb0; }
+
+.gb-sign {
+  display: flex;
+  gap: 7px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.gb-sign input { flex: 1 1 160px; }
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+.footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 18px 14px 28px;
+  text-align: center;
+  border-top: 1px dashed var(--line);
+}
+.construction {
+  display: block;
+  margin: 0 auto 12px;
+  image-rendering: pixelated;
+}
+.footer-text { color: var(--ghost); font-size: 16px; line-height: 1.5; }
+.footer-text.small { margin-top: 8px; color: #4d454f; font-size: 14px; }
+
+/* =====================================================================
+   FIXED BLINKING STATUS BAR
+   ===================================================================== */
+.statusbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  background: #060406;
+  border-top: 2px solid var(--purple);
+  color: var(--bone);
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  z-index: 100;
+}
+.statusbar .blink { color: var(--blood); }
+
+/* =====================================================================
+   BLINK ANIMATION
+   ===================================================================== */
+.blink { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+@media (max-width: 720px) {
+  .layout { flex-direction: column; }
+  .sidebar { flex: 1 1 auto; width: 100%; }
+  .artist-name { font-size: 42px; }
+  .panel-title { font-size: 26px; }
+  body { font-size: 18px; }
+}
