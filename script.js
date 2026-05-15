@@ -1,107 +1,204 @@
-/* vampptrampp — front-end scripts. No build step, no backend. */
+/* vampptrampp — scripts */
 
-/* EDIT: track name shown in the Status widget and bottom bar */
-const NOW_PLAYING = "[ untitled — dark electronic ]";
+/* =====================================================================
+   CONFIG — edit these when you have real content
+   ===================================================================== */
 
-/* EDIT: visitor counter starting number */
-const COUNTER_START = 1;
+/* EDIT: set to a real future date/time (ISO format) for the countdown.
+   Example: "2026-08-15T20:00:00" */
+const NEXT_SHOW_DATE = null;
 
-/* EDIT: digit padding for the counter (000001 = 6 digits) */
-const COUNTER_DIGITS = 6;
+/* EDIT: set to real fan/follower count */
+const FAN_COUNT = 0;
+
+/* EDIT: dates with shows this month (day numbers, 1-31) */
+const SHOW_DAYS = [];
+
+/* EDIT: NOW SPINNING track name shown in player bar */
+const NOW_SPINNING_TRACK = "[ no track loaded ]";
 
 
 /* =====================================================================
-   1. PERSISTENT VISITOR COUNTER
+   TAB SWITCHER
+   ===================================================================== */
+function initTabs() {
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = tab.dataset.tab;
+
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+
+      tab.classList.add('active');
+      const panel = document.getElementById('tab-' + target);
+      if (panel) panel.classList.add('active');
+    });
+  });
+}
+
+
+/* =====================================================================
+   VISITOR COUNTER
    ===================================================================== */
 function initHitCounter() {
-  let count = parseInt(localStorage.getItem("vt_hit_count"), 10);
-  if (isNaN(count)) {
-    count = COUNTER_START;
-  } else {
-    count = count + 1;
-  }
-  localStorage.setItem("vt_hit_count", count);
+  let count = parseInt(localStorage.getItem('vt_hit_count'), 10);
+  count = isNaN(count) ? 1 : count + 1;
+  localStorage.setItem('vt_hit_count', count);
 
-  const padded = String(count).padStart(COUNTER_DIGITS, "0");
-  const box = document.getElementById("hitCounter");
-  const inline = document.getElementById("hitInline");
+  const padded = String(count).padStart(6, '0');
+  const box = document.getElementById('hitCounter');
+  const inline = document.getElementById('hitInline');
   if (box) box.textContent = padded;
   if (inline) inline.textContent = count;
 }
 
 
 /* =====================================================================
-   2. STATUS BAR + "NOW PLAYING" WIDGET
+   FAN COUNT
    ===================================================================== */
-function initStatus() {
-  const statusText = document.getElementById("statusText");
-  const npText = document.getElementById("npText");
-  if (statusText) statusText.textContent = "Now playing: " + NOW_PLAYING;
-  if (npText) npText.textContent = NOW_PLAYING;
-}
-
-
-/* =====================================================================
-   3. FAKE INTERACTIONS
-   ===================================================================== */
-function fakeAction(kind) {
-  const messages = {
-    gallery:  "Gallery under construction — photos coming soon.",
-    tickets:  "Ticket links not active yet — check back before the show.",
-    link:     "This link isn't connected yet — placeholder only."
-  };
-  alert(messages[kind] || "This feature isn't active yet.");
-}
-
-
-/* =====================================================================
-   4. MAILING LIST FORM
-   ===================================================================== */
-function submitMailingList() {
-  const name = (document.getElementById("mlName") || {}).value || "";
-  const email = (document.getElementById("mlEmail") || {}).value || "";
-
-  if (!name.trim() || !email.trim()) {
-    alert("Enter a name and an email first.");
-    return;
+function initFanCount() {
+  const el = document.querySelector('.fan-count-num');
+  if (el && FAN_COUNT > 0) {
+    el.textContent = FAN_COUNT.toLocaleString();
   }
-  alert("Mailing list isn't active yet — nothing was sent.");
+}
 
-  ["mlName", "mlEmail", "mlMsg"].forEach(function (id) {
-    const el = document.getElementById(id);
-    if (el) el.value = "";
+
+/* =====================================================================
+   COUNTDOWN TIMER
+   ===================================================================== */
+function initCountdown() {
+  const el = document.getElementById('countdown');
+  if (!el || !NEXT_SHOW_DATE) return;
+
+  function tick() {
+    const now = Date.now();
+    const target = new Date(NEXT_SHOW_DATE).getTime();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      el.textContent = 'NOW';
+      return;
+    }
+
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    el.textContent = h + 'h ' + String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
+  }
+
+  tick();
+  setInterval(tick, 1000);
+}
+
+
+/* =====================================================================
+   MINI CALENDAR
+   ===================================================================== */
+function initCalendar() {
+  const wrap = document.getElementById('calendar');
+  if (!wrap) return;
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const today = now.getDate();
+
+  const monthNames = ['January','February','March','April','May','June',
+                      'July','August','September','October','November','December'];
+  const dayNames = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  let html = '<div class="cal-header">';
+  html += '<span>' + monthNames[month] + ' ' + year + '</span>';
+  html += '</div>';
+  html += '<div class="cal-grid">';
+
+  dayNames.forEach(function(d) {
+    html += '<div class="cal-day-name">' + d + '</div>';
   });
+
+  for (let i = 0; i < firstDay; i++) {
+    html += '<div class="cal-day empty"></div>';
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    let cls = 'cal-day';
+    if (d === today) cls += ' today';
+    if (SHOW_DAYS.indexOf(d) !== -1) cls += ' has-event';
+    html += '<div class="' + cls + '">' + d + '</div>';
+  }
+
+  html += '</div>';
+  wrap.innerHTML = html;
 }
 
 
 /* =====================================================================
-   5. GUESTBOOK
+   PLAYER BAR
    ===================================================================== */
-function signGuestbook() {
-  alert("Guestbook is under construction.");
+function initPlayer() {
+  const track = document.getElementById('playerTrack');
+  const disc = document.getElementById('playerDisc');
+  const btnPlay = document.getElementById('btnPlay');
+
+  if (track) {
+    const link = document.getElementById('playerLink');
+    if (link) link.textContent = NOW_SPINNING_TRACK;
+  }
+
+  if (btnPlay) {
+    btnPlay.addEventListener('click', function() {
+      disc.classList.toggle('spinning');
+      btnPlay.textContent = disc.classList.contains('spinning') ? '⏸' : '▶';
+    });
+  }
 }
 
 
 /* =====================================================================
-   6. TITLE BAR FLICKER
+   SMOOTH SCROLL for nav links that point to tab sections
    ===================================================================== */
-function initTitleFlicker() {
-  const titles = ["vampptrampp // dark electronic", "&#9760; ...enter... &#9760;"];
-  let i = 0;
-  setInterval(function () {
-    i = (i + 1) % titles.length;
-    const tmp = document.createElement("textarea");
-    tmp.innerHTML = titles[i];
-    document.title = tmp.value;
-  }, 2500);
+function initNavLinks() {
+  const tabMap = {
+    '#music':  'music',
+    '#photos': 'photos',
+    '#tour':   'tour',
+    '#bio':    'bio',
+    '#merch':  'merch',
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    const href = link.getAttribute('href');
+    if (tabMap[href]) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tabId = tabMap[href];
+        const tab = document.querySelector('.tab[data-tab="' + tabId + '"]');
+        if (tab) tab.click();
+        const tabs = document.getElementById('contentTabs');
+        if (tabs) tabs.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  });
 }
 
 
 /* =====================================================================
    BOOT
    ===================================================================== */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function() {
+  initTabs();
   initHitCounter();
-  initStatus();
-  initTitleFlicker();
+  initFanCount();
+  initCountdown();
+  initCalendar();
+  initPlayer();
+  initNavLinks();
 });

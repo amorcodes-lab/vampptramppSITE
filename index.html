@@ -1,233 +1,409 @@
 <!DOCTYPE html>
-<!--
-=====================================================================
-  vampptrampp — dark electronic
-=====================================================================
--->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>vampptrampp // dark electronic</title>
+  <title>vampptrampp</title>
   <meta name="description" content="Official site of vampptrampp — dark electronic." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=VT323&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- ================= TOP MARQUEE ================= -->
-  <div class="topbar">
-    <marquee scrollamount="4">
-      &#10013; welcome to the dark &#10013; new music incoming &#10013;
-      sign the guestbook &#10013; turn the lights off &#10013; vampptrampp &#10013;
-    </marquee>
-  </div>
-
-  <!-- ================= HEADER / HERO ================= -->
-  <header class="hero" id="home">
-    <div class="hero-frame">
-      <h1 class="artist-name glitch" data-text="vampptrampp">vampptrampp</h1>
-      <p class="tagline">&#9788; [ dark electronic &middot; industrial &middot; electronic ] &#9788;</p>
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-logo">
+      <a href="#" class="logo-link">vampptrampp</a>
     </div>
-
-    <!-- ================= NAVIGATION ================= -->
-    <nav class="nav">
-      <a href="#music">[ Music ]</a>
-      <a href="#gallery">[ Gallery ]</a>
-      <a href="#tour">[ Tour ]</a>
-      <a href="#bio">[ Manifesto ]</a>
-      <a href="#contact">[ Contact ]</a>
-      <a href="#guestbook">[ Guestbook ]</a>
+    <div class="header-tagline">
+      <!-- EDIT: artist quote / tagline -->
+      <em>"[ artist quote goes here ]"</em>
+    </div>
+    <nav class="header-nav">
+      <a href="#music" class="nav-link">Music</a>
+      <a href="#photos" class="nav-link">Photos</a>
+      <a href="#tour" class="nav-link">Tour</a>
+      <a href="#bio" class="nav-link">Bio</a>
+      <a href="#merch" class="nav-link">Merch</a>
     </nav>
   </header>
 
-  <!-- ================= MAIN LAYOUT (2 columns) ================= -->
-  <div class="layout">
+  <!-- ===================== 3-COLUMN GRID ===================== -->
+  <div class="site-grid">
 
-    <!-- ---------- LEFT: primary content ---------- -->
-    <main class="content">
+    <!-- ===== LEFT SIDEBAR ===== -->
+    <aside class="sidebar sidebar-left">
 
-      <!-- ========== SECTION: MUSIC PLAYER ========== -->
-      <section id="music" class="panel">
-        <h2 class="panel-title">&#9835; Music</h2>
-
-        <!-- EDIT: replace with Bandcamp / SoundCloud / Spotify iframe or <audio> -->
-        <div class="placeholder-box music-placeholder">
-          [ Music Player Placeholder ]
+      <!-- Fan count -->
+      <div class="widget">
+        <div class="fan-count-badge">
+          <!-- EDIT: update fan count number -->
+          <span class="fan-count-num">0</span> FANS
         </div>
+      </div>
 
-        <!-- EDIT: tracklist -->
-        <ul class="tracklist">
-          <li><span>01</span> [ Track One ] <span class="dur">--:--</span></li>
-          <li><span>02</span> [ Track Two ] <span class="dur">--:--</span></li>
-          <li><span>03</span> [ Track Three ] <span class="dur">--:--</span></li>
-          <li><span>04</span> [ Track Four ] <span class="dur">--:--</span></li>
+      <!-- Social links -->
+      <div class="widget">
+        <div class="widget-header">&#10013; Connect &#10013;</div>
+        <ul class="social-list">
+          <!-- EDIT: replace # with real URLs -->
+          <li><a href="#" class="social-link">&#9654; Spotify</a></li>
+          <li><a href="#" class="social-link">&#9654; YouTube</a></li>
+          <li><a href="#" class="social-link">&#9654; Bandcamp</a></li>
+          <li><a href="#" class="social-link">&#9654; SoundCloud</a></li>
+          <li><a href="#" class="social-link">&#9654; Instagram</a></li>
+          <li><a href="#" class="social-link">&#9654; TikTok</a></li>
+          <li><a href="#" class="social-link">&#9654; Twitter / X</a></li>
         </ul>
-      </section>
+      </div>
 
-      <img class="divider" src="assets/skull-divider.gif" alt="divider" />
+      <!-- Latest news -->
+      <div class="widget">
+        <div class="widget-header">&#128248; The Pulse</div>
+        <ul class="pulse-list">
+          <!-- EDIT: replace with real news items -->
+          <li><a href="#">[ News headline one ]</a></li>
+          <li><a href="#">[ News headline two ]</a></li>
+          <li><a href="#">[ News headline three ]</a></li>
+          <li><a href="#">[ News headline four ]</a></li>
+        </ul>
+      </div>
 
-      <!-- ========== SECTION: PHOTO GALLERY ========== -->
-      <section id="gallery" class="panel">
-        <h2 class="panel-title">&#9608; Gallery</h2>
-        <p class="hint">// click a frame — nothing happens yet, this is a shell</p>
+      <!-- Visitor counter -->
+      <div class="widget">
+        <div class="widget-header">&#9670; Visitors &#9670;</div>
+        <div class="hit-counter" id="hitCounter">000000</div>
+        <div class="widget-sub">visitor #<span id="hitInline">0</span></div>
+      </div>
 
-        <!-- EDIT: replace .gallery-slot divs with real <img> tags -->
-        <div class="gallery-grid">
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 1</div>
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 2</div>
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 3</div>
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 4</div>
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 5</div>
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 6</div>
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 7</div>
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 8</div>
-          <div class="gallery-slot" onclick="fakeAction('gallery')">Photo 9</div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-image-wrap">
+          <!-- EDIT: replace with real artist press photo -->
+          <div class="hero-photo-placeholder">[ ARTIST PHOTO ]</div>
+          <div class="hero-overlay">
+            <div class="hero-ankh">&#10013; VAMPPTRAMPP &#10013;</div>
+            <h1 class="hero-title">ENTER<br>THE DARK.</h1>
+            <p class="hero-sub">
+              <!-- EDIT: one-line artist description -->
+              [ Dark electronic artist. Short description goes here. ]
+            </p>
+            <div class="hero-buttons">
+              <a href="#music" class="btn btn-primary">&#9654; Listen Now</a>
+              <a href="#bio" class="btn btn-ghost">Read Bio</a>
+            </div>
+          </div>
         </div>
       </section>
 
-      <img class="divider" src="assets/skull-divider.gif" alt="divider" />
+      <!-- LATEST DROPS heading -->
+      <div class="section-heading">
+        <span class="candle">&#128373;</span>
+        <span class="section-heading-text">Latest Drops</span>
+        <span class="candle">&#128373;</span>
+      </div>
 
-      <!-- ========== SECTION: TOUR / EVENTS ========== -->
-      <section id="tour" class="panel">
-        <h2 class="panel-title">&#9760; Tour Dates</h2>
+      <!-- Latest releases cards -->
+      <div class="cards-row">
+        <!-- EDIT: replace each card with real release info -->
+        <div class="release-card">
+          <div class="card-frame">
+            <div class="card-photo-wrap">
+              <div class="card-photo-placeholder">[ ART ]</div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-title">[ Track / EP Title ]</div>
+            <div class="card-meta">Single</div>
+            <div class="card-date">[ Date ]</div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="card-frame">
+            <div class="card-photo-wrap">
+              <div class="card-photo-placeholder">[ ART ]</div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-title">[ Track / EP Title ]</div>
+            <div class="card-meta">Single</div>
+            <div class="card-date">[ Date ]</div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="card-frame">
+            <div class="card-photo-wrap">
+              <div class="card-photo-placeholder">[ ART ]</div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-title">[ Track / EP Title ]</div>
+            <div class="card-meta">EP</div>
+            <div class="card-date">[ Date ]</div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="card-frame">
+            <div class="card-photo-wrap">
+              <div class="card-photo-placeholder">[ ART ]</div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-title">[ Track / EP Title ]</div>
+            <div class="card-meta">Single</div>
+            <div class="card-date">[ Date ]</div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="card-frame">
+            <div class="card-photo-wrap">
+              <div class="card-photo-placeholder">[ ART ]</div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-title">[ Track / EP Title ]</div>
+            <div class="card-meta">Single</div>
+            <div class="card-date">[ Date ]</div>
+          </div>
+        </div>
+      </div>
 
-        <!-- EDIT: replace dummy rows with real show data -->
-        <table class="tour-table">
-          <thead>
-            <tr><th>Date</th><th>City</th><th>Venue</th><th>Tickets</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>00 / 00</td><td>[ City ]</td><td>[ Venue ]</td>
-              <td><a href="#" onclick="fakeAction('tickets');return false;">[ RSVP ]</a></td>
-            </tr>
-            <tr>
-              <td>00 / 00</td><td>[ City ]</td><td>[ Venue ]</td>
-              <td><a href="#" onclick="fakeAction('tickets');return false;">[ RSVP ]</a></td>
-            </tr>
-            <tr>
-              <td>00 / 00</td><td>[ City ]</td><td>[ Venue ]</td>
-              <td><a href="#" onclick="fakeAction('tickets');return false;">[ RSVP ]</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+      <!-- CONTENT TABS -->
+      <nav class="content-tabs" id="contentTabs">
+        <a href="#" class="tab active" data-tab="music">Music</a>
+        <a href="#" class="tab" data-tab="photos">Photos</a>
+        <a href="#" class="tab" data-tab="tour">Tour</a>
+        <a href="#" class="tab" data-tab="bio">Bio</a>
+        <a href="#" class="tab" data-tab="merch">Merch</a>
+      </nav>
 
-      <img class="divider" src="assets/skull-divider.gif" alt="divider" />
-
-      <!-- ========== SECTION: BIO / MANIFESTO ========== -->
-      <section id="bio" class="panel">
-        <h2 class="panel-title">&#10013; Manifesto</h2>
-
-        <!-- EDIT: replace with real bio / artist statement -->
-        <div class="scroll-box">
-          <p>[ Bio paragraph one — placeholder ] The signal comes from somewhere underneath.
-          Low frequencies, sharp edges. vampptrampp is the sound of machines dreaming
-          in the dark.</p>
-
-          <p>[ Bio paragraph two — placeholder ] Built from static and shadow.
-          Every track a descent. Every beat a pulse from a system you can't see.</p>
-
-          <p>[ Bio paragraph three — placeholder ] Replace this with the real manifesto.
-          The box scrolls — take as much space as it needs.</p>
+      <!-- TAB: MUSIC -->
+      <section class="tab-panel active" id="tab-music">
+        <div id="music">
+          <!-- EDIT: embed Spotify / Bandcamp / SoundCloud / YouTube playlist iframe here -->
+          <div class="embed-placeholder">
+            [ Music player embed — Spotify / Bandcamp / SoundCloud / YouTube ]
+          </div>
+          <ul class="tracklist">
+            <!-- EDIT: replace with real tracklist -->
+            <li><span class="track-num">01</span><span class="track-name">[ Track Title ]</span><span class="track-dur">--:--</span></li>
+            <li><span class="track-num">02</span><span class="track-name">[ Track Title ]</span><span class="track-dur">--:--</span></li>
+            <li><span class="track-num">03</span><span class="track-name">[ Track Title ]</span><span class="track-dur">--:--</span></li>
+            <li><span class="track-num">04</span><span class="track-name">[ Track Title ]</span><span class="track-dur">--:--</span></li>
+            <li><span class="track-num">05</span><span class="track-name">[ Track Title ]</span><span class="track-dur">--:--</span></li>
+            <li><span class="track-num">06</span><span class="track-name">[ Track Title ]</span><span class="track-dur">--:--</span></li>
+          </ul>
         </div>
       </section>
+
+      <!-- TAB: PHOTOS -->
+      <section class="tab-panel" id="tab-photos">
+        <div id="photos">
+          <div class="photo-grid">
+            <!-- EDIT: replace divs with <img src="..." alt="..."> tags -->
+            <div class="photo-slot">[ Photo ]</div>
+            <div class="photo-slot">[ Photo ]</div>
+            <div class="photo-slot">[ Photo ]</div>
+            <div class="photo-slot">[ Photo ]</div>
+            <div class="photo-slot">[ Photo ]</div>
+            <div class="photo-slot">[ Photo ]</div>
+            <div class="photo-slot">[ Photo ]</div>
+            <div class="photo-slot">[ Photo ]</div>
+            <div class="photo-slot">[ Photo ]</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: TOUR -->
+      <section class="tab-panel" id="tab-tour">
+        <div id="tour">
+          <table class="tour-table">
+            <thead>
+              <tr><th>Date</th><th>City</th><th>Venue</th><th>Tickets</th></tr>
+            </thead>
+            <tbody>
+              <!-- EDIT: replace with real show data -->
+              <tr>
+                <td>[ MM/DD/YY ]</td>
+                <td>[ City, State ]</td>
+                <td>[ Venue Name ]</td>
+                <td><a href="#" class="ticket-link">[ Tickets ]</a></td>
+              </tr>
+              <tr>
+                <td>[ MM/DD/YY ]</td>
+                <td>[ City, State ]</td>
+                <td>[ Venue Name ]</td>
+                <td><a href="#" class="ticket-link">[ Tickets ]</a></td>
+              </tr>
+              <tr>
+                <td>[ MM/DD/YY ]</td>
+                <td>[ City, State ]</td>
+                <td>[ Venue Name ]</td>
+                <td><a href="#" class="ticket-link">[ Tickets ]</a></td>
+              </tr>
+              <tr>
+                <td>[ MM/DD/YY ]</td>
+                <td>[ City, State ]</td>
+                <td>[ Venue Name ]</td>
+                <td><a href="#" class="ticket-link">[ Tickets ]</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB: BIO -->
+      <section class="tab-panel" id="tab-bio">
+        <div id="bio" class="bio-wrap">
+          <div class="bio-photo-wrap">
+            <!-- EDIT: replace with real artist photo -->
+            <div class="bio-photo-placeholder">[ PHOTO ]</div>
+          </div>
+          <div class="bio-text">
+            <!-- EDIT: replace with real bio -->
+            <p>[ Bio paragraph one. Describe the artist, origin, sound. ]</p>
+            <p>[ Bio paragraph two. Influences, story, journey. ]</p>
+            <p>[ Bio paragraph three. Where they are now, what's coming. ]</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: MERCH -->
+      <section class="tab-panel" id="tab-merch">
+        <div id="merch">
+          <div class="merch-grid">
+            <!-- EDIT: replace with real merch items + links -->
+            <div class="merch-item">
+              <div class="merch-photo-placeholder">[ Photo ]</div>
+              <div class="merch-name">[ Item Name ]</div>
+              <div class="merch-price">$--.--</div>
+              <a href="#" class="btn btn-primary">Buy</a>
+            </div>
+            <div class="merch-item">
+              <div class="merch-photo-placeholder">[ Photo ]</div>
+              <div class="merch-name">[ Item Name ]</div>
+              <div class="merch-price">$--.--</div>
+              <a href="#" class="btn btn-primary">Buy</a>
+            </div>
+            <div class="merch-item">
+              <div class="merch-photo-placeholder">[ Photo ]</div>
+              <div class="merch-name">[ Item Name ]</div>
+              <div class="merch-price">$--.--</div>
+              <a href="#" class="btn btn-primary">Buy</a>
+            </div>
+            <div class="merch-item">
+              <div class="merch-photo-placeholder">[ Photo ]</div>
+              <div class="merch-name">[ Item Name ]</div>
+              <div class="merch-price">$--.--</div>
+              <a href="#" class="btn btn-primary">Buy</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOW SPINNING label (above sticky player) -->
+      <div class="now-spinning-label">NOW SPINNING</div>
 
     </main>
 
-    <!-- ---------- RIGHT: retro sidebar ---------- -->
-    <aside class="sidebar">
+    <!-- ===== RIGHT SIDEBAR ===== -->
+    <aside class="sidebar sidebar-right">
 
-      <!-- visitor counter widget -->
+      <!-- Countdown timer -->
       <div class="widget">
-        <div class="widget-head">&#9670; Visitors &#9670;</div>
-        <div class="hit-counter" id="hitCounter">000000</div>
-        <div class="widget-sub">you are visitor #<span id="hitInline">0</span></div>
-      </div>
-
-      <!-- "now playing" status widget -->
-      <div class="widget">
-        <div class="widget-head">&#9835; Status &#9835;</div>
-        <div class="np-box"><span class="blink">&#9654;</span> <span id="npText">...</span></div>
-      </div>
-
-      <!-- mailing list / contact -->
-      <div class="widget" id="contact">
-        <div class="widget-head">&#9993; Mailing List</div>
-        <!-- EDIT: wire to Formspree / Netlify Forms / own endpoint -->
-        <div class="ml-form">
-          <input type="text" id="mlName" placeholder="name / alias" />
-          <input type="email" id="mlEmail" placeholder="email" />
-          <textarea id="mlMsg" rows="3" placeholder="message (optional)"></textarea>
-          <button class="btn" onclick="submitMailingList()">[ Subscribe ]</button>
+        <div class="countdown-timer" id="countdown">--h --m --s</div>
+        <div class="widget-sub">
+          <!-- EDIT: replace with real event label -->
+          Until Next Show
         </div>
       </div>
 
-      <img class="bat" src="assets/bat-fly.gif" alt="bat" />
-
-      <!-- social / links -->
+      <!-- Stats -->
       <div class="widget">
-        <div class="widget-head">&#10059; Links &#10059;</div>
-        <!-- EDIT: swap for real social links -->
-        <div class="linkbtns">
-          <a href="#" onclick="fakeAction('link');return false;" class="linkbtn">bandcamp</a>
-          <a href="#" onclick="fakeAction('link');return false;" class="linkbtn">soundcloud</a>
-          <a href="#" onclick="fakeAction('link');return false;" class="linkbtn">instagram</a>
-          <a href="#" onclick="fakeAction('link');return false;" class="linkbtn">spotify</a>
+        <div class="stats-row"><span class="stats-label">MONTHLY LISTENERS</span><span class="stats-val">[ -- ]</span></div>
+        <div class="stats-row"><span class="stats-label">TOTAL STREAMS</span><span class="stats-val">[ -- ]</span></div>
+        <div class="stats-row"><span class="stats-label">FOLLOWERS</span><span class="stats-val">[ -- ]</span></div>
+      </div>
+
+      <!-- Merch spotlight -->
+      <div class="widget" id="merch">
+        <div class="widget-header">&#9760; AfterLife Merch</div>
+        <!-- EDIT: replace with real merch item -->
+        <div class="merch-spot">
+          <div class="merch-spot-photo">[ Photo ]</div>
+          <div class="merch-spot-name">[ Item Name ]</div>
+          <div class="merch-spot-price">$--.--</div>
+        </div>
+        <a href="#" class="store-link">Visit Store &#8594;</a>
+      </div>
+
+      <!-- Event calendar -->
+      <div class="widget">
+        <div class="widget-header">&#128197; Event Calendar</div>
+        <div class="calendar-wrap" id="calendar">
+          <!-- JS renders the calendar -->
+        </div>
+        <div class="calendar-links">
+          <a href="#tour">+ View All Events</a>
+          <a href="#">+ Submit Event</a>
         </div>
       </div>
 
-      <img class="seal" src="assets/pentagram.gif" alt="seal" />
+      <!-- Recent updates -->
+      <div class="widget">
+        <div class="widget-header">&#9997; Recent Updates</div>
+        <ul class="updates-list">
+          <!-- EDIT: replace with real updates -->
+          <li><a href="#">[ Update / news headline ]</a><span class="update-meta">[ Date ]</span></li>
+          <li><a href="#">[ Update / news headline ]</a><span class="update-meta">[ Date ]</span></li>
+          <li><a href="#">[ Update / news headline ]</a><span class="update-meta">[ Date ]</span></li>
+          <li><a href="#">[ Update / news headline ]</a><span class="update-meta">[ Date ]</span></li>
+        </ul>
+      </div>
 
     </aside>
-  </div>
 
-  <!-- ================= GUESTBOOK ================= -->
-  <section id="guestbook" class="panel guestbook">
-    <h2 class="panel-title">&#9999; Guestbook</h2>
-    <p class="hint">// leave a mark on the wall</p>
+  </div><!-- end .site-grid -->
 
-    <div class="gb-entries" id="gbEntries">
-      <div class="gb-entry">
-        <span class="gb-name">Visitor_001</span>
-        <span class="gb-date">[ 00/00/00 ]</span>
-        <p>found this in the dark. staying.</p>
-      </div>
-      <div class="gb-entry">
-        <span class="gb-name">signal_ghost</span>
-        <span class="gb-date">[ 00/00/00 ]</span>
-        <p>the frequencies do something to my brain. good something.</p>
-      </div>
-    </div>
-
-    <div class="gb-sign">
-      <input type="text" id="gbName" placeholder="your name / alias" />
-      <input type="text" id="gbMsg" placeholder="your message" />
-      <button class="btn" onclick="signGuestbook()">[ Sign ]</button>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer">
-    <img class="construction" src="assets/under-construction.gif" alt="under construction" />
-
-    <p class="footer-text">
-      &copy; 2026 vampptrampp &mdash; all frequencies reserved.<br />
-      best viewed at midnight &middot; with the sound on &middot; lights off
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 vampptrampp &mdash; all rights reserved.</p>
+    <p class="footer-links">
+      <a href="#music">Music</a> &middot;
+      <a href="#photos">Photos</a> &middot;
+      <a href="#tour">Tour</a> &middot;
+      <a href="#bio">Bio</a> &middot;
+      <a href="#merch">Merch</a>
     </p>
   </footer>
 
-  <!-- ================= BLINKING STATUS BAR ================= -->
-  <div class="statusbar">
-    <span class="blink">&#9679;</span>
-    <span id="statusText">Now playing: [ placeholder ]</span>
+  <!-- ===================== NOW SPINNING PLAYER BAR ===================== -->
+  <div class="player-bar" id="playerBar">
+    <div class="player-disc" id="playerDisc" title="Now Spinning">
+      <span class="disc-icon">&#9685;</span>
+    </div>
+    <div class="player-info">
+      <span class="player-label">NOW SPINNING</span>
+      <span class="player-track" id="playerTrack">
+        <!-- EDIT: replace href with real YouTube URL -->
+        <a href="#" id="playerLink">[ No track loaded — add YouTube URL ]</a>
+      </span>
+    </div>
+    <div class="player-controls">
+      <!-- EDIT: wire to real YouTube player when music is ready -->
+      <button class="player-btn" id="btnPrev" title="Previous">&#9664;&#9664;</button>
+      <button class="player-btn" id="btnPlay" title="Play/Pause">&#9654;</button>
+      <button class="player-btn" id="btnNext" title="Next">&#9654;&#9654;</button>
+    </div>
+    <!-- Hidden YouTube iframe — uncomment and set src when ready -->
+    <!-- <iframe id="ytPlayer" width="0" height="0" src="https://www.youtube.com/embed/VIDEO_ID?enablejsapi=1" frameborder="0" allow="autoplay"></iframe> -->
   </div>
 
   <script src="script.js"></script>
